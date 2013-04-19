@@ -4,6 +4,7 @@
  */
 package cashsoft;
 import formas.formaInicio;
+import com.mysql.jdbc.Driver;
 
 /**
  *
