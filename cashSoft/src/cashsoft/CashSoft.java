@@ -18,6 +18,7 @@ public class CashSoft {
     public static void main(String[] args) {
         // TODO code application logic here
         
+   
         formaLogin formaLogin = new formaLogin();
         
         formaLogin.setVisible(true);

@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package formas;
+
+import cashsoft.Servicio;
+
 /**
  *
  * @author alejandra
@@ -142,18 +145,21 @@ public class formaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        // TODO add your handling code here:
-
-         // Class.forName("com.mysql.jdbc.Driver");
-         //Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/usuarios", "root", "Legnar01!");
-         mostrarInicio();
-        
+        // Variables requeridas:
+        Servicio nuevo = new Servicio();
+        String _nombre,_clave;
+        _nombre = this.jTextUsuario.getText();
+        _clave = this.jTextContrasenia.getText();
+       
+        // validacion si el usuario existe
+        if (nuevo.checausuario(_nombre,_clave)){
+            mostrarInicio();
+        }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void mostrarInicio(){
         
         formaInicio formaInicio = new formaInicio();
-        
         formaInicio.setVisible(true);
         this.setVisible(false);
         
