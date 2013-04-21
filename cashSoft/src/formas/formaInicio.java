@@ -16,6 +16,22 @@ public class formaInicio extends javax.swing.JFrame {
     public formaInicio() {
         initComponents();
     }
+    
+    private void mostrarCaptura(){
+        
+        formaCapturaGasto formaCaptura = new formaCapturaGasto();
+        
+        formaCaptura.setVisible(true);
+        
+    }
+    
+    private void mostrarConfiguracion(){
+        
+        formaConfiguracion formaConfiguracion = new formaConfiguracion();
+        
+        formaConfiguracion.setVisible(true);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,11 +44,28 @@ public class formaInicio extends javax.swing.JFrame {
 
         jPanelTitulo = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        jTPanePrincipal = new javax.swing.JTabbedPane();
+        jPanelBotones = new javax.swing.JPanel();
+        jButtonReportes = new javax.swing.JButton();
+        jButtonConfiguracion = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
+        jPanelPrincipal = new javax.swing.JPanel();
+        jLabelUsuario = new javax.swing.JLabel();
+        jLabelIngreso = new javax.swing.JLabel();
+        jLabelGastos = new javax.swing.JLabel();
+        jLabelRestante = new javax.swing.JLabel();
+        jLabelPorcentaje = new javax.swing.JLabel();
+        jLabelIngreso1 = new javax.swing.JLabel();
+        jLabelGastos1 = new javax.swing.JLabel();
+        jLabelRestante1 = new javax.swing.JLabel();
+        jLabelPorcentaje1 = new javax.swing.JLabel();
+        jButtonCapturarGasto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
+
+        lblTitulo.setBackground(new java.awt.Color(102, 102, 102));
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitulo.setText("CashSoft");
 
         javax.swing.GroupLayout jPanelTituloLayout = new javax.swing.GroupLayout(jPanelTitulo);
@@ -40,39 +73,204 @@ public class formaInicio extends javax.swing.JFrame {
         jPanelTituloLayout.setHorizontalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTituloLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(139, 139, 139)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTituloLayout.setVerticalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTituloLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
+        );
+
+        jPanelBotones.setBackground(new java.awt.Color(204, 204, 204));
+
+        jButtonReportes.setText("Reportes");
+        jButtonReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportesActionPerformed(evt);
+            }
+        });
+
+        jButtonConfiguracion.setText("Configuración");
+        jButtonConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfiguracionActionPerformed(evt);
+            }
+        });
+
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelBotonesLayout = new javax.swing.GroupLayout(jPanelBotones);
+        jPanelBotones.setLayout(jPanelBotonesLayout);
+        jPanelBotonesLayout.setHorizontalGroup(
+            jPanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelBotonesLayout.setVerticalGroup(
+            jPanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonReportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jButtonConfiguracion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+        );
+
+        jPanelPrincipal.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(0, 0, 153));
+        jLabelUsuario.setText("Usuario");
+        jLabelUsuario.setToolTipText("");
+
+        jLabelIngreso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelIngreso.setText("Ingreso mensual:");
+
+        jLabelGastos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelGastos.setText("Gastos del mes:");
+
+        jLabelRestante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelRestante.setText("Restante:");
+
+        jLabelPorcentaje.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPorcentaje.setText("Porcentaje:");
+
+        jLabelIngreso1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelIngreso1.setText("$");
+
+        jLabelGastos1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelGastos1.setText("$");
+
+        jLabelRestante1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelRestante1.setText("$");
+
+        jLabelPorcentaje1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPorcentaje1.setText("%");
+
+        jButtonCapturarGasto.setText("Capturar nuevo gasto");
+        jButtonCapturarGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCapturarGastoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
+        jPanelPrincipal.setLayout(jPanelPrincipalLayout);
+        jPanelPrincipalLayout.setHorizontalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCapturarGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelPorcentaje)
+                            .addComponent(jLabelGastos)
+                            .addComponent(jLabelRestante)
+                            .addComponent(jLabelIngreso))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelIngreso1)
+                            .addComponent(jLabelGastos1)
+                            .addComponent(jLabelRestante1)
+                            .addComponent(jLabelPorcentaje1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelPrincipalLayout.setVerticalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelIngreso)
+                    .addComponent(jLabelIngreso1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGastos)
+                    .addComponent(jLabelGastos1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelRestante)
+                    .addComponent(jLabelRestante1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPorcentaje)
+                    .addComponent(jLabelPorcentaje1))
+                .addGap(31, 31, 31)
+                .addComponent(jButtonCapturarGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jTPanePrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTPanePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 71, Short.MAX_VALUE))
+                .addComponent(jPanelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReportesActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfiguracionActionPerformed
+        // TODO add your handling code here:
+        
+        mostrarConfiguracion();
+        
+    }//GEN-LAST:event_jButtonConfiguracionActionPerformed
+
+    private void jButtonCapturarGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCapturarGastoActionPerformed
+        // TODO add your handling code here:
+        
+        mostrarCaptura();
+    }//GEN-LAST:event_jButtonCapturarGastoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,8 +307,22 @@ public class formaInicio extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCapturarGasto;
+    private javax.swing.JButton jButtonConfiguracion;
+    private javax.swing.JButton jButtonReportes;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jLabelGastos;
+    private javax.swing.JLabel jLabelGastos1;
+    private javax.swing.JLabel jLabelIngreso;
+    private javax.swing.JLabel jLabelIngreso1;
+    private javax.swing.JLabel jLabelPorcentaje;
+    private javax.swing.JLabel jLabelPorcentaje1;
+    private javax.swing.JLabel jLabelRestante;
+    private javax.swing.JLabel jLabelRestante1;
+    private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanelBotones;
+    private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTabbedPane jTPanePrincipal;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

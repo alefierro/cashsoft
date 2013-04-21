@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package cashsoft;
-import formas.formaInicio;
+import formas.formaLogin;
 import com.mysql.jdbc.Driver;
 
 /**
@@ -18,9 +18,9 @@ public class CashSoft {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        formaInicio formaInicial = new formaInicio();
+        formaLogin formaLogin = new formaLogin();
         
-        formaInicial.setVisible(true);
+        formaLogin.setVisible(true);
         
         //System.out.println("Hello world");
     }
