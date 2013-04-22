@@ -4,6 +4,10 @@
  */
 package formas;
 
+import cashsoft.ConsultaSQL;
+import java.sql.SQLException;
+
+
 /**
  *
  * @author alejandra
@@ -13,8 +17,9 @@ public class formaInicio extends javax.swing.JFrame {
     /**
      * Creates new form formaInicio
      */
-    public formaInicio() {
+    public formaInicio(){
         initComponents();
+
     }
     
     private void mostrarCaptura(){
@@ -31,6 +36,32 @@ public class formaInicio extends javax.swing.JFrame {
         
         formaConfiguracion.setVisible(true);
         
+    }
+    
+    public void consultaInicial(String usuario) throws SQLException, ClassNotFoundException{
+        
+        String resultados;
+        String[] separados;
+        Double ingreso;
+        Double restante;
+        Double porcentaje;
+        
+        ConsultaSQL consulta = new ConsultaSQL();
+        resultados = consulta.realizarConsulta(usuario);
+        
+        separados = resultados.split(",");
+        
+        jLabelUsuario.setText("Usuario: " + usuario);
+        jLabelIngreso1.setText(separados[0]);
+        jLabelGastos1.setText(separados[1]);
+        
+        ingreso = Double.parseDouble(jLabelIngreso1.getText());
+        restante =  ingreso - Double.parseDouble(jLabelGastos1.getText());
+        porcentaje = (restante / ingreso) * 100;
+        
+        jLabelRestante1.setText(restante.toString());
+        jLabelPorcentaje1.setText(porcentaje.toString() + "%");
+ 
     }
 
     /**
@@ -61,6 +92,11 @@ public class formaInicio extends javax.swing.JFrame {
         jButtonCapturarGasto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -181,7 +217,6 @@ public class formaInicio extends javax.swing.JFrame {
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelPorcentaje)
@@ -193,7 +228,8 @@ public class formaInicio extends javax.swing.JFrame {
                             .addComponent(jLabelIngreso1)
                             .addComponent(jLabelGastos1)
                             .addComponent(jLabelRestante1)
-                            .addComponent(jLabelPorcentaje1))))
+                            .addComponent(jLabelPorcentaje1)))
+                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPrincipalLayout.setVerticalGroup(
@@ -272,6 +308,17 @@ public class formaInicio extends javax.swing.JFrame {
         mostrarCaptura();
     }//GEN-LAST:event_jButtonCapturarGastoActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        /*try {
+            
+            consultaInicial();
+        
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(formaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -301,10 +348,14 @@ public class formaInicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new formaInicio().setVisible(true);
-            }
+                
+                    new formaInicio().setVisible(true);       
+ 
+                }
         });
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCapturarGasto;

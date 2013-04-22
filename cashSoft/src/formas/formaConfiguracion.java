@@ -44,12 +44,12 @@ public class formaConfiguracion extends javax.swing.JFrame {
         jLabelAlerta = new javax.swing.JLabel();
         jPanelContrasenia = new javax.swing.JPanel();
         jLabelContraseniaActual = new javax.swing.JLabel();
-        jTextConActual = new javax.swing.JTextField();
         jLabelContraseniaNueva = new javax.swing.JLabel();
-        jTextConNueva = new javax.swing.JTextField();
         jLabelRepetirContraseniaNueva = new javax.swing.JLabel();
-        jTextRepetirConNueva = new javax.swing.JTextField();
         jButtonGuardarContrasenia = new javax.swing.JButton();
+        jPasswordContraseniaActual = new javax.swing.JPasswordField();
+        jPasswordContraseniaNueva = new javax.swing.JPasswordField();
+        jPasswordRepetirContrasenia = new javax.swing.JPasswordField();
         jPanelUsuario = new javax.swing.JPanel();
         jLabelNombreUsuario = new javax.swing.JLabel();
         jTextNombreUsuario = new javax.swing.JTextField();
@@ -201,19 +201,19 @@ public class formaConfiguracion extends javax.swing.JFrame {
         jLabelContraseniaActual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelContraseniaActual.setText("Contraseña actual:");
 
-        jTextConActual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jLabelContraseniaNueva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelContraseniaNueva.setText("Contraseña nueva:");
-
-        jTextConNueva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabelRepetirContraseniaNueva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelRepetirContraseniaNueva.setText("Repetir contraseña nueva:");
 
-        jTextRepetirConNueva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jButtonGuardarContrasenia.setText("Guardar");
+
+        jPasswordContraseniaActual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jPasswordContraseniaNueva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jPasswordRepetirContrasenia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanelContraseniaLayout = new javax.swing.GroupLayout(jPanelContrasenia);
         jPanelContrasenia.setLayout(jPanelContraseniaLayout);
@@ -222,19 +222,16 @@ public class formaConfiguracion extends javax.swing.JFrame {
             .addGroup(jPanelContraseniaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelContraseniaLayout.createSequentialGroup()
-                        .addComponent(jLabelContraseniaNueva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextConNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelContraseniaLayout.createSequentialGroup()
-                        .addComponent(jLabelContraseniaActual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextConActual, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelContraseniaLayout.createSequentialGroup()
-                        .addComponent(jLabelRepetirContraseniaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextRepetirConNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelContraseniaNueva)
+                    .addComponent(jLabelContraseniaActual)
+                    .addComponent(jLabelRepetirContraseniaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPasswordContraseniaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPasswordRepetirContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(jPasswordContraseniaNueva)))
+                .addGap(21, 21, 21))
             .addGroup(jPanelContraseniaLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jButtonGuardarContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,16 +243,16 @@ public class formaConfiguracion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContraseniaActual)
-                    .addComponent(jTextConActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordContraseniaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContraseniaNueva)
-                    .addComponent(jTextConNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordContraseniaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanelContraseniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelRepetirContraseniaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextRepetirConNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(jPasswordRepetirContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jButtonGuardarContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -348,7 +345,7 @@ public class formaConfiguracion extends javax.swing.JFrame {
                 .addComponent(jPanelContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -425,7 +422,6 @@ public class formaConfiguracion extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCambiarContrasenia;
-    private javax.swing.JButton jButtonCambiarContrasenia2;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonCrearUsuario;
     private javax.swing.JButton jButtonGuardar;
@@ -433,33 +429,26 @@ public class formaConfiguracion extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGuardarUsuario;
     private javax.swing.JLabel jLabelAlerta;
     private javax.swing.JLabel jLabelContraseniaActual;
-    private javax.swing.JLabel jLabelContraseniaActual1;
     private javax.swing.JLabel jLabelContraseniaNueva;
-    private javax.swing.JLabel jLabelContraseniaNueva1;
     private javax.swing.JLabel jLabelContraseniaUsuario;
     private javax.swing.JLabel jLabelIngreso;
     private javax.swing.JLabel jLabelIngreso1;
     private javax.swing.JLabel jLabelIngresoUsuario;
     private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JLabel jLabelRepetirContraseniaNueva;
-    private javax.swing.JLabel jLabelRepetirContraseniaNueva1;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelContrasenia;
-    private javax.swing.JPanel jPanelContrasenia1;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JPanel jPanelUsuario;
+    private javax.swing.JPasswordField jPasswordContraseniaActual;
+    private javax.swing.JPasswordField jPasswordContraseniaNueva;
+    private javax.swing.JPasswordField jPasswordRepetirContrasenia;
     private javax.swing.JSlider jSliderAlerta;
-    private javax.swing.JTextField jTextConActual;
-    private javax.swing.JTextField jTextConActual1;
-    private javax.swing.JTextField jTextConNueva;
-    private javax.swing.JTextField jTextConNueva1;
     private javax.swing.JTextField jTextContraseniaUsuario;
     private javax.swing.JTextField jTextIngreso;
     private javax.swing.JTextField jTextIngresoUsuario;
     private javax.swing.JTextField jTextNombreUsuario;
-    private javax.swing.JTextField jTextRepetirConNueva;
-    private javax.swing.JTextField jTextRepetirConNueva1;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

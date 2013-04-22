@@ -55,7 +55,7 @@
               <Component id="jPanelContrasenia" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanelUsuario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -283,23 +283,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelContraseniaNueva" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextConNueva" min="-2" pref="195" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelContraseniaActual" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextConActual" min="-2" pref="195" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelRepetirContraseniaNueva" min="-2" pref="211" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextRepetirConNueva" min="-2" pref="195" max="-2" attributes="0"/>
+                      <Component id="jLabelContraseniaNueva" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelContraseniaActual" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelRepetirContraseniaNueva" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPasswordContraseniaActual" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPasswordRepetirContrasenia" pref="174" max="32767" attributes="0"/>
+                          <Component id="jPasswordContraseniaNueva" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
@@ -314,19 +310,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelContraseniaActual" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextConActual" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordContraseniaActual" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelContraseniaNueva" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextConNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordContraseniaNueva" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelRepetirContraseniaNueva" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jTextRepetirConNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordRepetirContrasenia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
                   <Component id="jButtonGuardarContrasenia" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -342,26 +338,12 @@
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a actual:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextConActual">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelContraseniaNueva">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a nueva:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextConNueva">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelRepetirContraseniaNueva">
@@ -372,16 +354,30 @@
             <Property name="text" type="java.lang.String" value="Repetir contrase&#xf1;a nueva:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextRepetirConNueva">
+        <Component class="javax.swing.JButton" name="jButtonGuardarContrasenia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordContraseniaActual">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonGuardarContrasenia">
+        <Component class="javax.swing.JPasswordField" name="jPasswordContraseniaNueva">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordRepetirContrasenia">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
