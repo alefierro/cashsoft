@@ -6,6 +6,8 @@ package formas;
 
 import cashsoft.ConsultaSQL;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -30,10 +32,15 @@ public class formaInicio extends javax.swing.JFrame {
         
     }
     
-    private void mostrarConfiguracion(){
+    private void mostrarConfiguracion() throws SQLException, ClassNotFoundException{
         
         formaConfiguracion formaConfiguracion = new formaConfiguracion();
         
+        String usuario;
+        
+        usuario = jLabelUsuario.getText().substring(9, jLabelUsuario.getText().length());
+        
+        formaConfiguracion.cargarDatos(usuario);
         formaConfiguracion.setVisible(true);
         
     }
@@ -296,9 +303,13 @@ public class formaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfiguracionActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+            mostrarConfiguracion();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(formaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        mostrarConfiguracion();
         
     }//GEN-LAST:event_jButtonConfiguracionActionPerformed
 
@@ -309,13 +320,13 @@ public class formaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCapturarGastoActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        /*try {
+        try {
             
-            consultaInicial();
-        
+            consultaInicial(jLabelUsuario.getText().substring(9,jLabelUsuario.getText().length()));
+            
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(formaInicio.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }//GEN-LAST:event_formWindowActivated
 
