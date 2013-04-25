@@ -31,7 +31,7 @@ public class Servicio extends SQLquery{
     public boolean checausuario(String _usuario, String _pass){
         boolean a = false;
         try {
-            this.conectar("127.0.0.1", "cashsoft", "cashsoft", "cashsoft");
+            this.conectar("127.0.0.1", "cashsoft", "root", "Legnar01!");
             this.consulta = this.conn.prepareStatement ("SELECT * FROM usuarios");
             this.datos = this.consulta.executeQuery();
             while(this.datos.next()){

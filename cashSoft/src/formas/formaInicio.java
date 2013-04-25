@@ -24,7 +24,7 @@ public class formaInicio extends javax.swing.JFrame {
 
     }
     
-    private void mostrarCaptura(){
+    private void mostrarCaptura() throws ClassNotFoundException, SQLException{
         
         formaCapturaGasto formaCaptura = new formaCapturaGasto();
         
@@ -314,9 +314,13 @@ public class formaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfiguracionActionPerformed
 
     private void jButtonCapturarGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCapturarGastoActionPerformed
-        // TODO add your handling code here:
-        
-        mostrarCaptura();
+        try {
+            // TODO add your handling code here:
+
+            mostrarCaptura();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(formaInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonCapturarGastoActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

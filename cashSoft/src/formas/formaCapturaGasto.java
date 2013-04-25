@@ -4,6 +4,10 @@
  */
 package formas;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author alejandra
@@ -13,8 +17,15 @@ public class formaCapturaGasto extends javax.swing.JFrame {
     /**
      * Creates new form formaCapturaGasto
      */
-    public formaCapturaGasto() {
+    public formaCapturaGasto() throws ClassNotFoundException, SQLException {
         initComponents();
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/cashsoft", "cashsoft", "cashsoft");
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM tipo_pago");
+        while (rs.next()) {
+           jComboTipoPago.addItem(rs.getObject("descripcion"));
+        }
     }
 
     /**
@@ -73,7 +84,6 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         jLabelCantidad.setText("Cantidad:");
 
         jComboTipoPago.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboTipoPago.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabelTipoPago.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelTipoPago.setText("Tipo pago:");
@@ -231,7 +241,13 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formaCapturaGasto().setVisible(true);
+                try {
+                    new formaCapturaGasto().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(formaCapturaGasto.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(formaCapturaGasto.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
