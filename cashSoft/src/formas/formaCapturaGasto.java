@@ -7,6 +7,7 @@ package formas;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import cashsoft.insertarSQL;
 
 /**
  *
@@ -22,11 +23,44 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         Class.forName("com.mysql.jdbc.Driver");
         Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/cashsoft", "cashsoft", "cashsoft");
         Statement st = conexion.createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM tipo_pago");
+        ResultSet rs = st.executeQuery("SELECT * FROM tipo_pago ORDER BY id_tipo_pago");
         while (rs.next()) {
            jComboTipoPago.addItem(rs.getObject("descripcion"));
         }
     }
+    
+    public void obtenerUsuario(String usuario){
+        
+        jLabelUsuario.setText(usuario);
+        
+    }
+    
+    private void guardarGasto() throws ClassNotFoundException{
+    
+            insertarSQL insertar = new insertarSQL();
+            String resultado;
+            
+            resultado = insertar.insertarGasto(jTextGasto.getText(), (jComboTipoPago.getSelectedIndex() + 1), Double.parseDouble(jTextCantidad.getText()), jTextFecha.getText(), jLabelUsuario.getText());
+            
+            jLabelMensaje.setText(resultado);
+            
+            if (resultado.equals("Gasto guardado")){
+            
+                limpiarCampos();
+                
+            }
+
+    }
+    
+    private void limpiarCampos(){
+        
+        jTextGasto.setText("");
+        jComboTipoPago.setSelectedIndex(0);
+        jTextCantidad.setText("");
+        jTextFecha.setText("");
+        
+    }
+            
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +84,9 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         jTextFecha = new javax.swing.JTextField();
         jButtonGuardar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jLabelUsuario = new javax.swing.JLabel();
+        jLabelFormato = new javax.swing.JLabel();
+        jLabelMensaje = new javax.swing.JLabel();
 
         jPanelTitulo.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -106,6 +143,11 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         });
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +155,16 @@ public class formaCapturaGasto extends javax.swing.JFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
+
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(0, 0, 153));
+
+        jLabelFormato.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelFormato.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelFormato.setText("Formato: aaaa-mm-dd");
+
+        jLabelMensaje.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelMensaje.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,13 +182,25 @@ public class formaCapturaGasto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextCantidad))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelGasto)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelFecha)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFecha)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelFormato))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelGasto)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabelMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
@@ -149,6 +213,10 @@ public class formaCapturaGasto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelGasto))
@@ -163,11 +231,13 @@ public class formaCapturaGasto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFecha)
-                    .addComponent(jTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelFormato)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jButtonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -187,8 +257,8 @@ public class formaCapturaGasto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -210,6 +280,15 @@ public class formaCapturaGasto extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        try {
+            guardarGasto();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(formaCapturaGasto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,8 +336,11 @@ public class formaCapturaGasto extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboTipoPago;
     private javax.swing.JLabel jLabelCantidad;
     private javax.swing.JLabel jLabelFecha;
+    private javax.swing.JLabel jLabelFormato;
     private javax.swing.JLabel jLabelGasto;
+    private javax.swing.JLabel jLabelMensaje;
     private javax.swing.JLabel jLabelTipoPago;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JTextField jTextCantidad;

@@ -4,7 +4,10 @@
  */
 package cashsoft;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -110,6 +113,32 @@ public class insertarSQL extends SQLquery{
             this.desconectar();
             
             return "Usuario creado";
+            
+        } catch (SQLException ex) {
+                
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE, null, ex);
+            return "Error, intente de nuevo";
+                            
+        } 
+        
+    }
+    
+    public String insertarGasto(String descripcion, Integer tipoPago, Double monto, String fecha, String usuario) throws ClassNotFoundException{
+        
+       String query;
+        
+        query = "INSERT INTO gastos(descripcion, tipo_pago, monto, fecha_gasto, user_id) ";
+        query += "VALUES ('" + descripcion + "'," + tipoPago + "," + monto + ",'" + fecha + "','" + usuario + "')";
+        
+        try {
+            
+            this.conectar("127.0.0.1", "cashsoft", "cashsoft", "cashsoft");
+            this.consulta = this.conn.prepareStatement(query);
+            this.consulta.execute();
+
+            this.desconectar();
+            
+            return "Gasto guardado";
             
         } catch (SQLException ex) {
                 

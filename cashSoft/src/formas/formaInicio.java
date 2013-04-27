@@ -27,8 +27,11 @@ public class formaInicio extends javax.swing.JFrame {
     private void mostrarCaptura() throws ClassNotFoundException, SQLException{
         
         formaCapturaGasto formaCaptura = new formaCapturaGasto();
+        String usuario = jLabelUsuario.getText().substring(9, jLabelUsuario.getText().length());
         
         formaCaptura.setVisible(true);
+        
+        formaCaptura.obtenerUsuario(usuario);
         
     }
     
